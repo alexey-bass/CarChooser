@@ -131,12 +131,12 @@ protected function getCarImages(query:String):void
 	
 	// API version
 	params.v = '1.0';
-	// API key for http://cisco.com
-	params.key = 'ABQIAAAAwakg1oHTtWTE4cNwaplrJhTBV1T1htoX8g8yQFgfZb1a2EAaGRRgmEKHu7X20n5bFSP93KTaviOeBg';
+	// API key for http://alexey-bass.blogspot.com/
+	params.key = 'ABQIAAAAwakg1oHTtWTE4cNwaplrJhT8shxY5Q8571ux7xrw0kBQysbmaxSCHtCPbvNwvbmvO-YaCeK26tuNcg';
 	// result size, 'large' is 8 items
 	params.rsz = 'large'
 	// images of the specified size
-	params.imgsz = 'xlarge' // large | xlarge | xxlarge
+	params.imgsz = 'large' // large | xlarge | xxlarge
 	// images of the specified type
 	params.imgtype = 'photo'
 	// restrict to site
