@@ -1,0 +1,10 @@
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+@namespace c "components.*";
+
+.centered
+{
+	color: #000000;
+	fontWeight: bold;
+	textAlign: center;
+}

@@ -1,0 +1,9 @@
+Tags are alphanumeric words without space.
+Cars can have several tags, separated with space (ex: 'sedan hybrid'). 
+
+Car types
+---------
+compact - small, compact cars (ex: Mazda 2)
+hybrid  - hybrid cars (ex: Toyota Prius) 
+minivan - family vehicles (ex: Mazda 5) 
+sedan   - sedan body (ex: Toyota Corolla)

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   minWidth="800" minHeight="600"
+			   creationComplete="initApplication()" currentState="loading">
+
+	<s:states>
+		<s:State name="loading"/>
+		<s:State name="ready"/>
+	</s:states>
+	
+	<s:transitions>
+		<s:Transition fromState="loading" toState="ready">
+			<s:Fade targets="{[containerTop, containerMiddle, containerBotom]}" duration="1500" />
+		</s:Transition>
+	</s:transitions>
+	
+	<fx:Style source="styles/main.css" />
+	<fx:Script source="scripts/main.as" />
+	
+	<fx:Declarations>
+		
+		<s:HTTPService id="dataService" url="resources/data.xml"
+					   result="dataServiceHandler(event)" fault="Alert.show('Can not retrieve data file.', 'Application error')"
+					   showBusyCursor="true" />
+		
+		<s:HTTPService id="googleSearch" url="http://ajax.googleapis.com/ajax/services/search/images"
+					   result="handleGoogleSearch(event)" fault="Alert.show('Can not get images.', 'Google Image search error')"
+					   resultFormat="text" showBusyCursor="true" />
+		
+		<mx:CurrencyFormatter id="moneyFormatter" 
+			alignSymbol="left" currencySymbol="{currencySign}"
+			useThousandsSeparator="true" thousandsSeparatorTo=" " useNegativeSign="true"/>
+		
+		<s:RadioButtonGroup id="carTagType" itemClick="updateCarList()" />
+		
+	</fx:Declarations>
+	
+	<s:Scroller width="100%" height="100%">
+		
+		<s:Group>
+			
+			<s:layout>
+				<s:VerticalLayout paddingLeft="10" paddingTop="10" paddingRight="10" paddingBottom="10" />
+			</s:layout>
+			
+			<s:Label includeIn="loading"
+				fontSize="16" fontWeight="bold"
+				text="Loading application data" />
+				
+			<s:VGroup id="containerTop" includeIn="ready">
+				<s:Label fontWeight="bold"
+					text="Select your monthly budget" />
+				<s:HGroup>
+					<mx:DataGrid id="budgetsTable" dataProvider="{budgetsList}" visible="true"
+						resizableColumns="false" sortableColumns="true" headerStyleName="centered"
+						itemClick="setUserBudget(event)" rowCount="{budgetsList.length}">
+						<mx:columns>
+							<mx:DataGridColumn headerText="Grade" dataField="name" textAlign="center" />
+							<mx:DataGridColumn headerText="Budget" dataField="value" textAlign="center"
+								labelFunction="formatColumnMoneyValue"/>
+						</mx:columns>
+					</mx:DataGrid>
+					
+					<s:VGroup paddingLeft="15">
+						<s:Label fontWeight="bold" text="Car types" />
+						<s:RadioButton group="{carTagType}" label="All" selected="true" />
+						<s:RadioButton group="{carTagType}" label="Compact" />
+						<s:RadioButton group="{carTagType}" label="Sedan" />
+						<s:RadioButton group="{carTagType}" label="Minivan" />
+						<s:CheckBox id="carTagHybrid" label="Hybrid" change="updateCarList()" />
+					</s:VGroup>
+					
+					<s:VGroup paddingLeft="15">
+						<s:Label fontWeight="bold" text="Smart filters" />
+						<s:CheckBox id="filterBudget" enabled="false" 
+									label="Filter car list by my budget"
+									change="updateCarList()" />
+					</s:VGroup>
+					
+					<s:VGroup paddingLeft="15">
+						<s:Label fontWeight="bold" text="Extra columns" />
+						<s:CheckBox id="chxBudgetDiffColumn" enabled="false" 
+									label="Lease fee difference from my budget"
+									change="budgetDiffColumn.visible = chxBudgetDiffColumn.selected" />
+						<s:CheckBox id="chxShowTaxCodes" 
+									label="Manufacturer-Model tax codes" 
+									change="taxColumn.visible = chxShowTaxCodes.selected" />
+					</s:VGroup>
+					
+					
+				</s:HGroup>
+			</s:VGroup>
+			
+			<s:VGroup id="containerBotom" includeIn="ready" paddingTop="10">
+				<s:Label id="carsResultText" fontWeight="bold"
+						 text="Cars list" />
+				<mx:DataGrid id="carsTable" dataProvider="{carList}" visible="true"
+							 resizableColumns="true" sortableColumns="true"
+							 rowCount="8" headerStyleName="centered"
+							 itemClick="carSelectHandler(event)"
+							 contextMenu="{carsContextMenu}" itemRollOver="carsTableRollOverIndex = event.rowIndex">
+					<mx:columns>
+						<mx:DataGridColumn headerText="Model" width="200"
+										   dataField="name">
+							<mx:itemRenderer>
+								<fx:Component>
+									<s:MXItemRenderer>
+										<mx:Label selectable="true" text="{data.name}" />
+									</s:MXItemRenderer>
+								</fx:Component>
+							</mx:itemRenderer>
+						</mx:DataGridColumn>
+						<mx:DataGridColumn headerText="Engine, L" width="80" textAlign="right"
+										   dataField="engine" />
+						<mx:DataGridColumn headerText="Horse Power" width="90" textAlign="right"
+										   dataField="horsePower" />
+						<mx:DataGridColumn headerText="Trunk, L" width="80" textAlign="right"
+										   dataField="trunk" />
+						<mx:DataGridColumn headerText="Lease fee" width="90" textAlign="right"
+										   dataField="leaseFee" labelFunction="formatColumnMoneyValue" />
+						
+						<mx:DataGridColumn headerText="Budget diff" id="budgetDiffColumn" visible="false"
+										   width="90" textAlign="right"
+										   dataField="budgetDiff" labelFunction="formatColumnMoneyValue" />
+						
+						<!--<mx:DataGridColumn headerText="Budget diff" width="100" id="budgetDiffColumn"
+										   dataField="budgetDiff" visible="false">
+							<mx:itemRenderer>
+								<fx:Component>
+									<s:MXItemRenderer>
+										
+										<fx:Script>
+											<![CDATA[
+												private function getColor(diff:Object):uint
+												{
+													if (diff <= 0)
+														return 0x009900;
+													
+													return 0xff0000;
+												}
+											]]>
+										</fx:Script>
+										
+										<s:layout>
+											<s:VerticalLayout verticalAlign="middle" horizontalAlign="right"/>
+										</s:layout>
+										
+										<s:Label text="{data.budetDiff as Object}" color="{getColor(data.budetDiff)}" />
+										
+									</s:MXItemRenderer>
+								</fx:Component>
+							</mx:itemRenderer>
+						</mx:DataGridColumn>-->
+						<mx:DataGridColumn headerText="Tax fee" width="80" textAlign="right"
+										   dataField="taxFee" labelFunction="formatColumnMoneyValue" />
+						<mx:DataGridColumn headerText="Price" width="80" textAlign="right"
+										   dataField="price" labelFunction="formatColumnMoneyValue" />
+						<mx:DataGridColumn headerText="Man. - Model" width="100" id="taxColumn"
+										   visible="false" labelFunction="labelTaxCodes" />
+					</mx:columns>
+				</mx:DataGrid>
+				
+			</s:VGroup>
+			
+			<s:VGroup id="containerMiddle" includeIn="ready" paddingTop="10" width="100%">
+				<s:Label id="previewLabel" fontWeight="bold"
+						 text="Select a car to see previews" />
+				<mx:TileList width="100%" height="140" rowCount="1" 
+							 dataProvider="{googleImages}"
+							 itemRenderer="components.ImageThumbnail">
+				</mx:TileList>
+			</s:VGroup>
+		
+		</s:Group>
+	</s:Scroller>
+		
+</s:Application>
