@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+
+	<currency>
+		<sign>₪ </sign>
+	</currency>
+
+	<budgets>
+		<budget>
+			<name>1</name>
+			<value>1000</value>
+		</budget>
+		<budget>
+			<name>2, 3</name>
+			<value>2000</value>
+		</budget>
+		<budget>
+			<name>4</name>
+			<value>3000</value>
+		</budget>
+		<budget>
+			<name>5</name>
+			<value>4000</value>
+		</budget>
+	</budgets>
+	
+	<cars>
+		<car>
+			<name>Nissan Qashqai</name>
+			<engine>2.0</engine>
+			<horsePower>140</horsePower>
+			<trunk>450</trunk>
+			<leaseFee>4000</leaseFee>
+			<manufacturer>637</manufacturer>
+			<model>171</model>
+			<price>159000</price>
+			<taxFee>3940</taxFee>
+		</car>
+		<car>
+			<name>Ford Fiesta</name>
+			<engine>1.6</engine>
+			<horsePower>100</horsePower>
+			<trunk>467</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>730</manufacturer>
+			<model>311</model>
+			<price>105500</price>
+			<taxFee>2150</taxFee>
+			<tags>compact</tags>
+		</car>
+		<car>
+			<name>Honda Civic</name>
+			<engine>1.8</engine>
+			<horsePower>140</horsePower>
+			<trunk>389</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>155</manufacturer>
+			<model>121</model>
+			<price>139900</price>
+			<taxFee>3470</taxFee>
+		</car>
+		<car>
+			<name>Citroen C5</name>
+			<engine>2.0</engine>
+			<horsePower>143</horsePower>
+			<trunk>439</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>817</manufacturer>
+			<model>561</model>
+			<price>179990</price>
+			<taxFee>4460</taxFee>
+		</car>
+		<car>
+			<name>Toyota Prius Hybrid</name>
+			<engine>1.5</engine>
+			<horsePower></horsePower>
+			<trunk>408</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>413</manufacturer>
+			<model>1001</model>
+			<price>152000</price>
+			<taxFee>3250</taxFee>
+		</car>
+		<car>
+			<name>Honda Insight Hybrid</name>
+			<engine>1.35</engine>
+			<horsePower>115</horsePower>
+			<trunk>350</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>312</manufacturer>
+			<model>861</model>
+			<price>129990</price>
+			<taxFee>2130</taxFee>
+			<tags>hybrid sedan</tags>
+		</car>
+		<car>
+			<name>Toyota Corolla</name>
+			<engine>1.6</engine>
+			<horsePower>124</horsePower>
+			<trunk>450</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>413</manufacturer>
+			<model>871</model>
+			<price>117500</price>
+			<taxFee>2400</taxFee>
+		</car>
+		<car>
+			<name>Mazda 6 Executive</name>
+			<engine>2.0</engine>
+			<horsePower>147</horsePower>
+			<trunk>501</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>588</manufacturer>
+			<model>51</model>
+			<price>157500</price>
+			<taxFee>3910</taxFee>
+		</car>
+		<car>
+			<name>Subaru B4</name>
+			<engine>2.0</engine>
+			<horsePower>165</horsePower>
+			<trunk>433</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>650</manufacturer>
+			<model>1561</model>
+			<price>155500</price>
+			<taxFee>3860</taxFee>
+		</car>
+		<car>
+			<name>Hyundai I30</name>
+			<engine>1.6</engine>
+			<horsePower>122</horsePower>
+			<trunk>340</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>253</manufacturer>
+			<model>21</model>
+			<price>116500</price>
+			<taxFee>2380</taxFee>
+		</car>
+		<car>
+			<name>Ford Mondeo</name>
+			<engine>2.3</engine>
+			<horsePower>161</horsePower>
+			<trunk>493</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>731</manufacturer>
+			<model>171</model>
+			<price>157500</price>
+			<taxFee>3910</taxFee>
+		</car>
+		<car>
+			<name>Honda Accord</name>
+			<engine>2.0</engine>
+			<horsePower>155</horsePower>
+			<trunk>459</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>312</manufacturer>
+			<model>1051</model>
+			<price>186400</price>
+			<taxFee>4620</taxFee>
+		</car>
+		<car>
+			<name>Mazda 2 Active</name>
+			<engine>1.5</engine>
+			<horsePower>105</horsePower>
+			<trunk>419</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>588</manufacturer>
+			<model>411</model>
+			<price>105500</price>
+			<taxFee>2150</taxFee>
+			<tags>compact</tags>
+		</car>
+		<car>
+			<name>Hyundai I20</name>
+			<engine>1.4</engine>
+			<horsePower>100</horsePower>
+			<trunk>295</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>502</manufacturer>
+			<model>51</model>
+			<price>101000</price>
+			<taxFee>2060</taxFee>
+		</car>
+		<car>
+			<name>Citroen C4 Picasso</name>
+			<engine>1.6</engine>
+			<horsePower>120</horsePower>
+			<trunk>500</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>496</manufacturer>
+			<model>251</model>
+			<price>155990</price>
+			<taxFee>3870</taxFee>
+		</car>
+		<car>
+			<name>Citroen C4</name>
+			<engine>1.6</engine>
+			<horsePower>120</horsePower>
+			<trunk>320</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>817</manufacturer>
+			<model>482</model>
+			<price>117991</price>
+			<taxFee>2410</taxFee>
+		</car>
+		<car>
+			<name>Chevrolet Cruze</name>
+			<engine>1.6</engine>
+			<horsePower>113</horsePower>
+			<trunk>450</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>751</manufacturer>
+			<model>721</model>
+			<price>118500</price>
+			<taxFee>2420</taxFee>
+		</car>
+		<car>
+			<name>Honda Civic Hybrid</name>
+			<engine></engine>
+			<horsePower></horsePower>
+			<trunk></trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>312</manufacturer>
+			<model>651</model>
+			<price>151000</price>
+			<taxFee>3230</taxFee>
+			<tags>hybrid sedan</tags>
+		</car>
+		<car>
+			<name>Fiat Bravo</name>
+			<engine>1.4</engine>
+			<horsePower>120</horsePower>
+			<trunk>400</trunk>
+			<leaseFee>3000</leaseFee>
+			<manufacturer>737</manufacturer>
+			<model>260</model>
+			<price>115990</price>
+			<taxFee>2370</taxFee>
+		</car>
+	</cars>
+		
+</data>
