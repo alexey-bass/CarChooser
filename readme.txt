@@ -13,3 +13,7 @@ Also there are taxes, here in Israel coupled with car prices.
 (This first version is more likely for Israel, I didn't thought about worldwide because it's not a case right now).
 
 For car previews I use Google Image Search API.
+
+For local testing of release version (not debug), you need to change security settings for SWF files.
+http://www.flexdeveloper.eu/forums/mxml/url-for-local-xml-file-using-httpservice/
+http://www.macromedia.com/support/documentation/en/flashplayer/help/settings_manager04.html
