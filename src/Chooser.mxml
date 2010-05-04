@@ -120,39 +120,9 @@
 										   dataField="trunk" />
 						<mx:DataGridColumn headerText="Lease fee" width="90" textAlign="right"
 										   dataField="leaseFee" labelFunction="formatColumnMoneyValue" />
-						
 						<mx:DataGridColumn headerText="Budget diff" id="budgetDiffColumn" visible="false"
-										   width="90" textAlign="right"
+										   width="90" textAlign="right" itemRenderer="components.BudgetDiffCell"
 										   dataField="budgetDiff" labelFunction="formatColumnMoneyValue" />
-						
-						<!--<mx:DataGridColumn headerText="Budget diff" width="100" id="budgetDiffColumn"
-										   dataField="budgetDiff" visible="false">
-							<mx:itemRenderer>
-								<fx:Component>
-									<s:MXItemRenderer>
-										
-										<fx:Script>
-											<![CDATA[
-												private function getColor(diff:Object):uint
-												{
-													if (diff <= 0)
-														return 0x009900;
-													
-													return 0xff0000;
-												}
-											]]>
-										</fx:Script>
-										
-										<s:layout>
-											<s:VerticalLayout verticalAlign="middle" horizontalAlign="right"/>
-										</s:layout>
-										
-										<s:Label text="{data.budetDiff as Object}" color="{getColor(data.budetDiff)}" />
-										
-									</s:MXItemRenderer>
-								</fx:Component>
-							</mx:itemRenderer>
-						</mx:DataGridColumn>-->
 						<mx:DataGridColumn headerText="Tax fee" width="80" textAlign="right"
 										   dataField="taxFee" labelFunction="formatColumnMoneyValue" />
 						<mx:DataGridColumn headerText="Price" width="80" textAlign="right"
