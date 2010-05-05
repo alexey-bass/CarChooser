@@ -30,7 +30,7 @@
 					   resultFormat="text" showBusyCursor="true" />
 		
 		<mx:CurrencyFormatter id="moneyFormatter" 
-			alignSymbol="left" currencySymbol="{currencySign}"
+			alignSymbol="left" currencySymbol="{currencySign}" precision="0"
 			useThousandsSeparator="true" thousandsSeparatorTo=" " useNegativeSign="true"/>
 		
 		<s:RadioButtonGroup id="carTagType" itemClick="updateCarList()" />
