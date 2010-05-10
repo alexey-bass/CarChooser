@@ -108,9 +108,17 @@ protected function labelTaxCodes(item:Object, column:DataGridColumn):String
 //	return data.leaseFee;
 //}
 
+protected function changePreviewType():void
+{
+	if (carsTable.selectedItem)
+	{
+		getCarImages(carsTable.selectedItem.name);
+	}
+}
+
 protected function carSelectHandler(event:ListEvent):void
 {
-	var query:String = '"' + event.itemRenderer.data.name + '"';
+	var query:String = event.itemRenderer.data.name;
 	
 	// add engine liters for better results
 //	if (event.itemRenderer.data.engine)
@@ -127,6 +135,18 @@ protected function getCarImages(query:String):void
 {
 	googleSearch.cancel();
 	
+	switch (previewType.selectedItem)
+	{
+		case 'Video':
+			googleSearch.url = 'http://ajax.googleapis.com/ajax/services/search/video';
+			break;
+		
+		default:
+			googleSearch.url = 'http://ajax.googleapis.com/ajax/services/search/images';
+			break;
+	}
+	
+	
 	var params:Object = new Object;
 	
 	// API version
@@ -142,11 +162,11 @@ protected function getCarImages(query:String):void
 	// restrict to site
 	//				params.as_sitesearch = 'drive.ru'
 	// query
-	params.q = query;
+	params.q = '"' + query + '"';
 	
 	previewLabel.text = 
 		  'Preview for '
-		+ query 
+		+ '"' + query + '"' 
 		+ ' (note that real company cars can be different from previews in some ways)';
 	
 	googleSearch.send(params);

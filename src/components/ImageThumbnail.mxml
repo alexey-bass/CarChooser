@@ -5,7 +5,7 @@
 		 width="160" height="100%" horizontalAlign="center" verticalAlign="middle">
 	
 	<mx:Image source="{data.tbUrl}" toolTip="{data.titleNoFormatting}"
-		width="{data.tbWidth}" height="{data.tbHeight}"
+		width="{(parentDocument.previewType == 'Images') ? data.tbWidth : 130}" height="{(parentDocument.previewType == 'Images') ? data.tbHeight : 100}"
 		click="{navigateToURL(new URLRequest(data.url))}"/>
 
 </mx:VBox>
