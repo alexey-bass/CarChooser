@@ -6,6 +6,6 @@
 	
 	<mx:Image source="{data.tbUrl}" toolTip="{data.titleNoFormatting}"
 		width="{(parentDocument.previewType == 'Images') ? data.tbWidth : 130}" height="{(parentDocument.previewType == 'Images') ? data.tbHeight : 100}"
-		click="{navigateToURL(new URLRequest(data.url))}"/>
+		click="{navigateToURL(new URLRequest(data.url))}" useHandCursor="true" buttonMode="true"/>
 
 </mx:VBox>

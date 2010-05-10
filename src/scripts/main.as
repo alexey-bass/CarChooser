@@ -34,6 +34,9 @@ private var carsTableRollOverIndex:Number;
 [Bindable]
 private var googleImages:ArrayCollection;
 
+[Bindable]
+private var selectedCarName:String;
+
 protected function initApplication():void
 {
 	// get our cars data
@@ -110,21 +113,21 @@ protected function labelTaxCodes(item:Object, column:DataGridColumn):String
 
 protected function changePreviewType():void
 {
-	if (carsTable.selectedItem)
+	if (selectedCarName)
 	{
-		getCarImages(carsTable.selectedItem.name);
+		getCarImages(selectedCarName);
 	}
 }
 
 protected function carSelectHandler(event:ListEvent):void
 {
-	var query:String = event.itemRenderer.data.name;
+	selectedCarName = event.itemRenderer.data.name;
 	
 	// add engine liters for better results
 //	if (event.itemRenderer.data.engine)
 //		query += ' ' + event.itemRenderer.data.engine + 'L';
 	
-	getCarImages(query);
+	getCarImages(selectedCarName);
 }
 
 /**
@@ -146,6 +149,8 @@ protected function getCarImages(query:String):void
 	{
 		case 'Video':
 			googleSearch.url = 'http://ajax.googleapis.com/ajax/services/search/video';
+			// query
+			params.q = query;
 			break;
 		
 		default:
@@ -158,11 +163,10 @@ protected function getCarImages(query:String):void
 			// restrict to site
 //			params.as_sitesearch = 'drive.ru'
 			googleSearch.url = 'http://ajax.googleapis.com/ajax/services/search/images';
+			// query
+			params.q = '"' + query + '"';
 			break;
 	}
-	
-	// query
-	params.q = '"' + query + '"';
 	
 	previewLabel.text = 
 		  'Preview for '
