@@ -135,6 +135,13 @@ protected function getCarImages(query:String):void
 {
 	googleSearch.cancel();
 	
+	var params:Object = new Object;
+	
+	// API version
+	params.v = '1.0';
+	// API key for http://alexey-bass.blogspot.com/
+	params.key = 'ABQIAAAAwakg1oHTtWTE4cNwaplrJhT8shxY5Q8571ux7xrw0kBQysbmaxSCHtCPbvNwvbmvO-YaCeK26tuNcg';
+	
 	switch (previewType.selectedItem)
 	{
 		case 'Video':
@@ -142,25 +149,18 @@ protected function getCarImages(query:String):void
 			break;
 		
 		default:
+			// result size, 'large' is 8 items
+			params.rsz = 'large'
+			// images of the specified size
+			params.imgsz = 'large' // large | xlarge | xxlarge
+			// images of the specified type
+			params.imgtype = 'photo'
+			// restrict to site
+//			params.as_sitesearch = 'drive.ru'
 			googleSearch.url = 'http://ajax.googleapis.com/ajax/services/search/images';
 			break;
 	}
 	
-	
-	var params:Object = new Object;
-	
-	// API version
-	params.v = '1.0';
-	// API key for http://alexey-bass.blogspot.com/
-	params.key = 'ABQIAAAAwakg1oHTtWTE4cNwaplrJhT8shxY5Q8571ux7xrw0kBQysbmaxSCHtCPbvNwvbmvO-YaCeK26tuNcg';
-	// result size, 'large' is 8 items
-	params.rsz = 'large'
-	// images of the specified size
-	params.imgsz = 'large' // large | xlarge | xxlarge
-	// images of the specified type
-	params.imgtype = 'photo'
-	// restrict to site
-	//				params.as_sitesearch = 'drive.ru'
 	// query
 	params.q = '"' + query + '"';
 	
